@@ -277,7 +277,7 @@ function animateIdle () {
 function setLevelTileMap (level: number) {
     clearGame()
     if (level == 0) {
-    	
+        tiles.setTilemap(tilemap`level`)
     } else if (level == 1) {
         tiles.setTilemap(tilemap`level_0`)
     } else if (level == 2) {
@@ -297,8 +297,8 @@ function setLevelTileMap (level: number) {
         info.setLife(3)
         tiles.setCurrentTilemap(tilemap`level4`)
     } else if (level == 8) {
-        game.splash("Boss level 3")
-        info.setLife(1)
+        game.splash("celabration")
+        info.changeScoreBy(100)
         tiles.setCurrentTilemap(tilemap`level6`)
     }
     initializeLevel(level)
