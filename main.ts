@@ -277,7 +277,7 @@ function animateIdle () {
 function setLevelTileMap (level: number) {
     clearGame()
     if (level == 0) {
-        tiles.setTilemap(tilemap`level`)
+    	
     } else if (level == 1) {
         tiles.setTilemap(tilemap`level_0`)
     } else if (level == 2) {
@@ -289,9 +289,17 @@ function setLevelTileMap (level: number) {
     } else if (level == 5) {
         tiles.setTilemap(tilemap`level_4`)
     } else if (level == 6) {
+        game.splash("Boss level")
+        info.setLife(1)
         tiles.setTilemap(tilemap`level_5`)
     } else if (level == 7) {
-        tiles.setTilemap(tilemap`level_6`)
+        game.splash("Boss level 2")
+        info.setLife(3)
+        tiles.setCurrentTilemap(tilemap`level4`)
+    } else if (level == 8) {
+        game.splash("Boss level 3")
+        info.setLife(1)
+        tiles.setCurrentTilemap(tilemap`level6`)
     }
     initializeLevel(level)
 }
@@ -724,17 +732,17 @@ function createEnemies () {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . f f f f f f . . . . . . 
-            . . . f 7 2 7 7 7 2 f . . . . . 
-            . . f 7 7 7 2 7 2 7 7 f . . . . 
-            . . f 7 7 7 7 7 7 7 7 7 f . . . 
-            . f 7 7 7 2 7 7 7 2 7 7 f . . . 
-            . f 7 7 7 2 7 7 7 2 7 7 7 f . . 
-            . f 7 7 7 7 7 7 7 7 7 7 7 7 f . 
-            . f 7 7 7 7 2 2 2 7 7 7 7 7 f . 
-            . . f 7 7 2 2 7 2 2 7 7 7 7 f . 
-            . . f 7 7 2 7 7 7 2 2 7 7 7 f . 
-            . . . f 7 7 7 7 7 7 7 7 7 7 f . 
-            . . . . f f 7 7 7 7 7 7 7 f . . 
+            . . . f e f e e e f f . . . . . 
+            . . f e e e f e f e e f . . . . 
+            . . f e e e e e e e e e f . . . 
+            . f e e e f e e e f e e f . . . 
+            . f e e e f e e e f e e e f . . 
+            . f e e e e e e e e e e e e f . 
+            . f e e e e f f f e e e e e f . 
+            . . f e e f f e f f e e e e f . 
+            . . f e e f e e e f f e e e f . 
+            . . . f e e e e e e e e e e f . 
+            . . . . f f e e e e e e e f . . 
             . . . . . . f f f f f f f . . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Bumper)
@@ -1009,6 +1017,7 @@ levelCount = 8
 currentLevel = 0
 setLevelTileMap(currentLevel)
 giveIntroduction()
+scene.cameraFollowSprite(hero)
 // set up hero animations
 game.onUpdate(function () {
     if (hero.vx < 0) {
