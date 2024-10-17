@@ -290,11 +290,11 @@ function setLevelTileMap (level: number) {
         tiles.setTilemap(tilemap`level_4`)
     } else if (level == 6) {
         game.splash("Boss level")
-        info.setLife(1)
+        info.setLife(3)
         tiles.setTilemap(tilemap`level_5`)
     } else if (level == 7) {
         game.splash("Boss level 2")
-        info.setLife(3)
+        info.setLife(5)
         tiles.setCurrentTilemap(tilemap`level4`)
     } else if (level == 8) {
         game.splash("celabration")
